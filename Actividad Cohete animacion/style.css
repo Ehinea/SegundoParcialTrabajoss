@@ -1,0 +1,71 @@
+button {
+    background-color: #cf3d3d;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #333;
+    position: absolute;
+    left: 45%;
+    top: 90%;
+    transform: scale(1);
+    /* La magia: cambia 1000 en 0.3 segundos suavemente */
+    transition: all 0.3s ease-out;
+}
+
+button:hover {
+    background-color: #d80000;
+    transform: scale(1.1); /* Crece un 10% */
+}
+
+.modo-activado {
+    background-color: #e4e8e5;
+    color: #e8e9e8;
+}
+
+.modo-activado button {
+    border-color: #f1f1f1;
+    background-color: #00ff44;
+    color: #181818;
+}
+
+.Cohete {
+    position: relative;
+    left: 750px;
+    top: 750px;
+    width: 8%;
+    z-index: -1;
+}
+
+@keyframes flotar{
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+.Cohete {
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes subir{
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+.Cohete {
+    animation: flotar 3s ease-in-out infinite;
+}
+
