@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Conexión API | Fetch</title>
+</head>
+<body>
+
+    <div id="tarjeta-contenedor">
+        <!-- Lo que vamos a cambiar -->
+         <div id="estado-carga" class="oculto">
+            <div class="esqueleto avatar1-api"></div>
+            <div class="esqueleto nombre1-api"></div>
+            <div class="esqueleto estado1-api"></div> 
+            <div class="esqueleto race1-api"></div>
+        </div>
+
+        <div id="estado-listo" class="oculto">
+                    
+        </div>
+
+    </div>
+
+    
+    
+    <button id="Boton" onclick="llamarAPI()"> 📡 Traer Personaje Aleatorio</button>
+    <!--<button onclick="mostrarError()"> 📡 Traer Personaje Aleatorio</button>-->
+    <script>
+        function llamarAPI() {
+            const contenedor = document.getElementById("tarjeta-contenedor");
+
+            // 2. Generamos un número aleatorio del 1 al 40 (Total de personajes)
+            let idAleatorio = Math.floor(Math.random() * 40) +1;
+            
+            // 3. Enviamos a nuestro "mensajero" a la URL de la API
+            
+            // 1. Atrapamos ambos estados
+            const carga = document.getElementById("estado-carga");
+            const listo = document.getElementById("estado-listo");
+
+                
+            listo.classList.add("oculto");
+            carga.classList.remove("oculto");
+
+            fetch ('https://dragonball-api.com/api/characters/' + idAleatorio) 
+            .then(respuesta => respuesta.json()) // Desempaquetamos el formato JSON
+            .then(datos => {
+           
+                // 2. Apagamos el esqueleto y encendemos el contenido real
+
+                carga.classList.add("oculto");
+                //
+                listo.classList.remove("oculto");
+                // 4. Inyectamos nuestro diseño usando Plantillas Literales (Semana 7)
+                listo.innerHTML = `
+                    <img src="${datos.image}" alt="Foto de ${datos.name}" class="avatar-api">
+                    <h2 class="nombre-api">${datos.name}</h2>
+                    <span class="estado-api">Ki: ${datos.ki}</span>
+                    <p style="color: #000000"; font-weight: bold;">Race: ${datos.race}</p>
+                `;
+               
+                console.log(datos)
+                 
+            })
+            
+            .catch(error => {
+                // 5. Manejo de errores (Si se cae el internet)
+                listo.innerHTML = "<p> ❌ Hubo un error en la Matrix.</p>";
+            });
+        }
+
+        function mostrarError() {
+            let botonA = document.getElementById("Boton");
+            
+            if (contenedor===false) {
+                contenedor = true;
+                botonA.innerText= "No tienes internet";
+            }else{
+                contenedor = false;
+            }
+        }       
+        
+    </script>
+</body>
+</html>
