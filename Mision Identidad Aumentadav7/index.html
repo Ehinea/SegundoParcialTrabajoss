@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto Integrador: ID Aumentada</title>
+</head>
+<body>
+
+    <audio id="sonido-scan"> 
+        <source src="https://www.soundjay.com/buttons_c2026/sounds/button-09a.mp3">
+    </audio>
+    
+    <div class="credencial">
+        <canvas id="holograma" width="100" height="50"></canvas>
+
+        <div id="estado-carga"> 
+            
+            <div class="skeleton" style="width: 190px; border-radius: 10%; position: absolute; left: 20px; height: 250px; top: 10px;"></div>
+            <div class="skeleton" style="width: 160px; height: 40px; padding: 20px; border-radius: 20px; position: absolute; left: 220px; top: 10px; gap: 20px;"></div>
+            <div class="skeleton" style="width: 160px; height: 40px; padding: 20px; border-radius: 20px; position: absolute; left: 220px; top: 97px; gap: 20px;"></div>
+            <div class="skeleton" style="width: 55px; height: 40px; padding: 20px; border-radius: 20px; position: absolute; left: 220px; top: 184px; gap: 20px;"></div>
+            <div class="skeleton" style="width: 55px; height: 40px; padding: 20px; border-radius: 20px; position: absolute; left: 325px; top: 184px; gap: 20px;"></div>
+        </div>
+
+        <div id="estado-listo" class="oculto">
+            
+        </div>
+    </div>
+
+    <button onclick="iniciarEscaneo()">Generar Identidad</button>
+
+    <script>
+        function iniciarEscaneo() {
+            
+            // 1. Mostrar estado de carga
+            const carga= document.getElementById("estado-carga");
+            const listo= document.getElementById("estado-listo");
+            listo.classList.add("oculto");
+            carga.classList.remove("oculto");
+            // ==========================================
+            // RETO 2: FETCH API Y DATOS (Semanas 7 y 10)
+            // ==========================================
+            fetch('https://randomuser.me/api/?results=1')
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+                    let usuario = datos.results[0]; // El objeto principal
+
+                    // 👇 INYECTA LOS DATOS EN EL DOM
+                    // Tip: usa usuario.picture.large, usuario.name.first, usuario.location.country
+            carga.classList.remove("oculto");
+            listo.classList.add("oculto");
+            listo.innerHTML =`
+            <div class="oculto-grid">
+           <div class="credencial-item caja1"> 
+            <img id="avatar-img" src="${usuario.picture.large}" alt="Avatar ${datos.name}">
+           </div>
+
+           <div class="credencial-item caja2">NOMBRE DE ACCESO
+            
+            <p class="dato-valor" id="txt-nombre">${usuario.name.first}</p>
+           </div>
+
+            <div class="credencial-item caja3">ORIGEN / BASE
+            <p class="dato-valor" id="txt-origen">${usuario.location.country}</p>
+            </div>
+
+            <div class="credencial-item caja4"><h2>COORDENADAS DE ACCESO (GPS)</h2>
+            <p class="dato-valor" id="txt-gps">Calculando...</p>
+            </div>
+
+            <div class="credencial-item caja5">Sello</div>
+            </div>
+            `;
+                    
+                    
+                    // Mostramos la interfaz lista
+                    document.getElementById("estado-carga").classList.add("oculto");
+                    document.getElementById("estado-listo").classList.remove("oculto");
+
+                    // ==========================================
+                    // RETO 5: AUDIO (Semana 9)
+                    // ==========================================
+                    // 👇 Reproduce el sonido de la etiqueta <audio>
+                    const elAudio = document.getElementById("sonido-scan");
+                    elAudio.play();
+                    // Lanzamos funciones secundarias
+                    obtenerUbicacion();
+                    dibujarHolograma();
+                })
+                .catch(error => alert("Error de conexión en el servidor principal."));
+        }
+
+        // ==========================================
+        // RETO 3: GEOLOCALIZACIÓN (Semana 9)
+        // ==========================================
+        function obtenerUbicacion() {
+            // 👇 Usa navigator.geolocation para obtener latitud y longitud.
+            // Escríbelo en el elemento "txt-gps"
+            if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        // Éxito:
+                        (position) => {
+                            let lat = position.coords.latitude;
+                            let lon = position.coords.longitude;
+
+                            // Redondear a 4 decimales (aprox 11 metros de precisión)
+                            let latTruncada = lat.toFixed(4); 
+                            let lonTruncada = lon.toFixed(4);
+                            
+                            document.getElementById('txt-gps').innerText = 
+                                "¡Conexión establecida!";
+                            document.getElementById('txt-gps').innerText =     
+                                `Lat: ${latTruncada}, Lon: ${lonTruncada}`;
+                        },
+                        // Error/Denegación:
+                        (error) => {
+                            document.getElementById('error').innerText = 
+                                "Permiso denegado. Estás fuera del radar";
+                            console.error(error);
+                        }
+                    );
+                } else {
+                    alert("La geolocalización no es soportada por tu navegador.");
+                }
+        }
+
+        // ==========================================
+        // RETO 4: CANVAS (Semana 8)
+        // ==========================================
+        function dibujarHolograma() {
+            let canvas = document.getElementById("holograma");
+            let ctx = canvas.getContext("2d");
+            
+            // 👇 Usa arc(), stroke() y colores neón para dibujar un "Sello de Seguridad" abstracto
+            ctx.beginPath();
+            ctx.moveTo(20, 20);
+            ctx.lineTo(100, 100);
+            ctx.strokeStyle = 'blue';
+            //ctx.arcStyle = 'red';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            ctx.strokeStyle = '#1eff05';
+            ctx.arc(25, 25, 15, 0, 1.5*Math.PI);
+            ctx.stroke();
+            
+
+            
+        
+        
+        }
+
+        
+    </script>
+
+</body>
+</html>
