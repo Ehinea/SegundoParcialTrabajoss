@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Ubicacion geografica</title>
+    </head>
+
+    <body>
+        <div class="tarjeta">
+            
+            <div class="Satelite"> 📡</div>
+            <h2 id="texto">Enlace Satelital </h2>
+            <h4 id="coordenadas"></h4>
+            <h3 id="conexion"></h3>
+            <h3 id="error"></h3>
+            <button id="ActivarRastreo"> Activar Rastreo</button>
+
+        </div>
+    </body>
+
+    <script>
+            document.getElementById('ActivarRastreo').addEventListener('click', () => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        // Éxito:
+                        (position) => {
+                            let lat = position.coords.latitude;
+                            let lon = position.coords.longitude;
+
+                            // Redondear a 4 decimales (aprox 11 metros de precisión)
+                            let latTruncada = lat.toFixed(4); 
+                            let lonTruncada = lon.toFixed(4);
+                            
+                            document.getElementById('conexion').innerText = 
+                                "¡Conexión establecida!";
+                            document.getElementById('coordenadas').innerText =     
+                                `Lat: ${latTruncada}, Lon: ${lonTruncada}`;
+                        },
+                        // Error/Denegación:
+                        (error) => {
+                            document.getElementById('error').innerText = 
+                                "Permiso denegado. Estás fuera del radar";
+                            console.error(error);
+                        }
+                    );
+                } else {
+                    alert("La geolocalización no es soportada por tu navegador.");
+                }
+            });
+        
+        
+    </script>

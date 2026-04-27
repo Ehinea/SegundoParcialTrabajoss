@@ -1,0 +1,103 @@
+body {
+font-family: 'UD Digi Kyokasho NK-B', Tahoma, Geneva, Verdana, Fira Code;
+background-color: #f4f4f9;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+}
+.tarjeta {
+background-color: rgb(202, 166, 166);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+text-align: center;
+width: 300px;
+}
+
+#ActivarRastreo {
+background-color: #000000;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 8px;
+font-size: 1rem;
+cursor: pointer;
+width: 70%;
+margin-top: 10px;
+font-weight: bold;
+transition: background-color 0.3s;
+position: absolute;
+top: 80%;
+}
+#ActivarRastreo:hover {
+background-color: #6390f0;
+}
+
+#texto {
+margin-top: 20px;
+font-size: 1.2rem;
+font-weight: bold;
+color: #333;
+min-height: 30px; /* Evita que la tarjeta brinque */
+position: absolute;
+top: 130px;
+}
+
+#coordenadas {
+margin-top: 20px;
+font-size: 1rem;
+font-weight: bold;
+color: #000000;
+min-height: 30px; /* Evita que la tarjeta brinque */
+position: absolute;
+top: 220px;
+}
+
+#conexion {
+    color: #23bb35;
+    position: absolute;
+    top: 170px;
+}
+
+#error {
+    color: #bb2323;
+    position: absolute;
+    top: 200px;
+    left: 35px;
+    right: 35px;
+}
+
+.Satelite {
+    font-size: 100px;
+    position: absolute;
+    top: 10px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontal */
+  align-items: center;     /* Vertical */
+  /*top: 20px;*/
+  /*flex-wrap: nowrap;        
+  align-content:stretch;
+  column-gap: 0px;*/
+  width: 20%;
+  height: 40%;
+  background-color: rgba(96, 122, 193, 0.25); /* Cambia esto */
+  padding: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.tarjeta section {
+    display: flex;
+    flex-direction:row;
+    width: 200%;
+    height: 80%;
+    left: 0%;
+    position: absolute;
+    /*border: 2px solid black;*/
+}
