@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Conexión API | Fetch</title>
+</head>
+<body>
+
+    <div id="tarjeta-contenedor">
+        <!-- Lo que vamos a cambiar -->
+         <p> Presiona el botón.</p>
+    </div>
+
+    <button onclick="llamarAPI()"> 📡 Traer Personaje Aleatorio</button>
+
+    <script>
+        function llamarAPI() {
+            const contenedor = document.getElementById("tarjeta-contenedor");
+
+            // 1. UX: Mostramos al usuario que estamos cargando
+            //contenedor.innerHTML = "<p> 🕑 Viajando por el multiverso...</p>";
+
+            // 3. Enviamos a nuestro "mensajero" a la URL de la API
+            //fetch('https://randomuser.me/api/?results=3&gender=female&nat=es,mx')
+            fetch('https://randomuser.me/api/?results=4&gender=male&nat=us')
+            .then(respuesta => respuesta.json()) // Desempaquetamos el formato JSON
+            .then(data => {
+
+                // 2. EL CONTENEDOR (Donde vamos a pintar)
+               // let contenedor = document.getElementById("tarjeta-contenedor");
+ 
+ 
+               // 3. TU MISIÓN: Escribe el ciclo forEach aquí abajo para imprimir las 3 tarjetas en pantalla
+               // RECUERDA: Usa contenedor.innerHTML += ` HTML AQUÍ `;
+
+                data.results.forEach(function(item) {
+               //Diseñamos la tarjeta una sola vez
+                let contenedor = `
+                    <div>
+                        <span class="nombre">Nombre: ${item.name.first} <br> </span>
+                        <span class="nacionalidad">Nacionalidad: ${item.location.country} <br> </span>
+                        <span class="genero">Género: ${item.gender} <br> </span>
+                        <img src="${item.picture.medium}" alt="Foto de ${data.results[0].picture.medium}">
+                    </div>
+                `;
+                // La inyectamos en el HTML
+                document.getElementById("tarjeta-contenedor").innerHTML += contenedor;
+                });
+               
+            })
+
+            
+            .catch(error => {
+                // 5. Manejo de errores (Si se cae el internet)
+                contenedor.innerHTML = "<p> ❌ Hubo un error en la Matrix.</p>";
+            });
+
+
+        }
+    </script>
+</body>
+</html>
