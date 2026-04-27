@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto: Reproductor Premium</title>
+</head>
+<body>
+ 
+ 
+    <div class="contenedor-video">
+        
+        <video id="cine" src="https://www.w3schools.com/html/mov_bbb.mp4" loop></video>
+        
+        <div class="controles-ui">
+            <button onclick="accionPlay()">⏵</button>
+            <button onclick="accionPausa()">⏹</button>
+            <button id="boton1" onclick="accionMute()">🔊</button>
+            <button onclick="CambiarTema()">Apagar Luces</button>
+            </div>
+ 
+ 
+    </div>
+            <!--<button class="boton" id= "boton1" onclick="cambiarTema()"> Modo noche</button>-->
+ 
+    <script>
+        // 1. Atrapamos el video
+        const miVideo = document.getElementById("cine");
+ 
+ 
+        // 2. Funciones de la API Multimedia
+        function accionPlay() {
+            miVideo.play();
+        }
+ 
+ 
+        function accionPausa() {
+            miVideo.pause();
+        }
+ 
+ 
+        function accionMute() {
+            // El atributo muted es un Booleano (true/false)
+            // Si está true, lo volvemos false, y viceversa.
+            // 👇 RETO 3: Cambia el ícono de mute a unmute y viceversa
+           
+           let botonA = document.getElementById("boton1");
+
+            if (miVideo.muted === false) {
+                miVideo.muted = true;
+                botonA.innerText= "🔇";
+
+                
+            } else {
+                miVideo.muted = false;
+                botonA.innerText= "🔊";
+
+            }
+        }
+ 
+ 
+        // 👇 RETO 4: Crea aquí la función para el "Modo Cine" usando document.body.classList.toggle
+        function CambiarTema() {
+            let cuerpo = document.body;
+            cuerpo.classList.toggle("luces-apagadas");
+        }
+    </script>
+</body>
+</html>
