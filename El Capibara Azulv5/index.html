@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Capibara plataforma</title>
+</head>
+
+<body>
+    <div class="flex-container">
+    <header>
+        <h1 id="Encabezado"> Capibara Azul</h1>
+        <img src= "capibara.jpg" class="Capibara">
+        
+    </header>
+
+    <button class="boton" id= "boton1" onclick="cambiarTema()"> Modo noche</button>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#inicio"> Inicio</a></li>
+            <li><a href="#Menu"> Menú</a></li>
+            <li><a href="#nosotros"> Nosotros</a></li>
+            <li><a href="#contacto"> Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+
+        <section id="inicio">
+                <h1> DESPIERTA TU CREATIVIDAD</h1>
+                <img src="producto.jpg" class="Imagen2">
+               
+                
+        </section>
+
+        <section id="Menu">
+                <h1> MENÚ DE SERVICIOS</h1>
+            <div class="bento-grid">
+                <div class="bento-item caja-1">1. Servicio principal</div>
+                <div class="bento-item caja-2">2. Servicio principal</div>
+                <div class="bento-item caja-3">3. Servicio principal</div>
+                <div class="bento-item caja-4">4. Servicio principal</div>
+            </div>
+        </section>
+    
+        <section id="nosotros">
+                <h1> NUESTRA COMPAÑÍA</h1> 
+                <h2> Somos una compañía 100% ensenadense donde puedes disfrutar de un café mientras estudias, trabajas o charlas con tus amigos o familiares.</h2>             
+                
+        </section>
+       
+        
+    </main>
+     <button class="btn-magico">Pedir ahora</button>
+   
+    </div>
+
+    
+    
+    <footer id="contacto">
+                <h3> Nuestras redes sociales son: </h3>
+                <h4> @capibaraaa</h4>
+    </footer>
+
+    <script>
+        function cambiarTema() {
+            let cuerpo = document.body;
+            cuerpo.classList.toggle("modo-oscuro");
+
+            let elemento_titulo = document.getElementById("Encabezado");
+
+            let botonA = document.getElementById("boton1");
+
+
+            
+
+
+            if (cuerpo.classList.contains("modo-oscuro")) {
+                elemento_titulo.style.color = "white";
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+                botonA.innerText= "Modo día";
+            } else {
+                elemento_titulo.style.color = "black";
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                botonA.innerText= "Modo noche";
+            }
+        }
+
+        
+    </script>
+
+    
+
+</body>
+</html>

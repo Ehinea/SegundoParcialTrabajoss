@@ -1,0 +1,450 @@
+body {
+    background-color: #ffffff;
+    color: #333333;
+    /*font-family: sans-serif;
+    transition: 0.4s;*/
+    text-align: center;
+    /*padding-top: 50px;*/
+}
+
+#menu {
+    
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #95c7f0;
+    border-top: 1px solid #dddddd;
+    width: 100%;
+    height: 100%;
+    position:relative;
+    top: 160rem;
+    left: -0.5%;
+}
+
+header {
+    background-color: #95c7f0;
+    padding: 0px;
+    text-align: center;
+    border-bottom: 5px solid #dddddd;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 30%;
+    
+}
+
+header h1 {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        position: relative;
+        top: 0px;
+        font-size: 100px;
+    }
+
+nav {
+    width: 20%;
+    height: 30%;
+}
+
+/*nav li {
+    list-style-type: none;
+}*/
+
+nav li a {
+     /* La magia: cambia 1000 en 0.3 segundos suavemente */
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav li a:hover {
+    text-decoration: underline;
+    transform: scale(1.2); /* Crece un 10% */
+}
+
+.Capibara{
+    width: 10%;
+    position: relative;
+    top: -230px;
+    left: 80%;
+    border-radius: 30px;
+    border: 10px solid #1b5ee3;
+    display: block;
+}
+
+.boton {
+    padding: 10px 90px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #333;
+    position: relative;
+    top: 20rem;
+    left: 8px;
+    transform: scale(1);
+    /* La magia: cambia 1000 en 0.3 segundos suavemente */
+    transition: all 0.3s ease;
+}
+
+.boton:hover {
+        background-color: #1b5ee3;
+        transform: scale(1.2); /* Crece un 10% */
+}
+
+.modo-oscuro {
+    background-color: #1a1a1a;
+    color: #52514b;
+}
+
+.modo-oscuro button {
+    border-color: #f1f1f1;
+    background-color: #333;
+    color: #52514b;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontal */
+  align-items: center;     /* Vertical */
+  height: 100%;  /* Altura total de la pantalla */
+  top: 20px;
+  flex-wrap: nowrap;        
+  align-content:stretch; 
+  column-gap: 0px;
+  width: 100%;
+}
+
+.flex-container section {
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    height: 80%;
+    left: 0%;
+    position: relative;
+    /*border: 2px solid black;*/
+}
+
+#inicio {
+    position: absolute;
+    top: 25rem;
+}
+
+#inicio h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    position: relative;
+    top: -6%;
+    font-size: 5rem;
+}
+
+.Imagen2 {
+    width: 50%;
+    position: relative;
+    top: -8%;
+    left: 25%;
+    border-radius: 30px;
+    border: 10px solid #1b5ee3;
+}
+
+@keyframes flotar{
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+.Imagen2 {
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.bento-grid {
+    display: grid;
+    /* Creamos 3 columnas de tamaños iguales */
+    grid-template-columns: repeat(3, 1fr);
+    /* Creamos 2 filas (la 1ra más alta que la 2da) */
+    grid-template-rows: 250px 150px;
+    gap: 20px; /* Espacio entre los bloques */
+    width: 600px;
+}
+
+/* LAS CAJAS (Hijos) */
+.bento-item {
+    background-color: rgb(181, 212, 255);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,119,182,0.1);
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    top:0rem;
+    left: 25rem;
+}
+
+/* Alterando las reglas para cajas específicos */
+.caja-1 {
+    /* Esta caja ocupará 2 columnas de ancho */
+    grid-column: span 2;
+    background-color: #0077b6;
+    color: white;
+}
+
+.caja-4 {
+    /* Esta caja ocupará 2 columnas de ancho */
+    grid-column: span 2;
+}
+
+#Menu {
+    position: absolute;
+    top: 75rem;
+}
+
+#Menu h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    position: relative;
+    top: -6%;
+    font-size: 5rem;
+}
+
+#nosotros {
+    position: absolute;
+    top: 125rem;
+}
+
+#nosotros h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    position: relative;
+    top: -6%;
+    font-size: 5rem;
+}
+
+#nosotros h2 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: -6%;
+    font-size: 2rem;
+}
+
+.btn-magico {
+    background-color: #ab4a4a;
+    transform: scale(1);
+    padding: 10px 90px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #333;
+    /* La magia: cambia 1000 en 0.3 segundos suavemente */
+    transition: all 0.3s ease-out;
+    width: 20%;
+    height: 50px;
+    position: relative;
+    top: 115rem;
+    left: 20px;
+    }
+
+.btn-magico:hover {
+    background-color: #00b4d8;
+    transform: scale(1.1); /* Crece un 10% */
+    }
+
+
+@media(max-width: 480px)
+{
+    /*body{
+        
+    }*/
+
+    header{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        width: 90%;
+        height: 10%;
+        position:absolute;
+        top: 0%;
+        left: -0.5%;
+    }
+
+    .flex-container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        position:absolute;
+        top: 0%;
+        left: -0.5%;
+        overflow-y:auto;
+    }
+
+    header h1{
+        /*font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: relative;
+        top: 0px;*/
+        font-size: 2rem;
+    }
+
+    .Capibara{
+        position: relative;
+        top: -80%;
+        left: 80%;
+        width: 10%;
+    }
+
+    .boton{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+        position: relative;
+        top: -26%;
+        left: 0%;
+        width: 50%;
+        /*z-index: 1;*/
+    }
+
+    /*nav{
+        width: 15%;
+        /*height: 30%;
+        position: relative;
+        top: 15%;
+    }*/
+
+    nav ul{
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        position: relative;
+        top: -10%;
+        left: 5%;        
+    }
+
+    /*nav ul li{
+        list-style-type: none;
+        margin-bottom: -6px;
+        margin-top: 1px;
+    }*/
+
+    nav li a{
+        font-size: 15px;
+    }
+    
+    #inicio h1{
+        
+        /*width: 50%;*/
+        font-size: 25px;
+        position: relative;
+        top: -20%;
+        left: -5%;
+        
+    }
+
+    .Imagen2{
+        /*width: 100%;*/
+        position: relative;
+        top: -18%;
+        left: 20%;
+        
+    }
+
+    #Menu h1{
+        
+        /*width: 50%;*/
+        font-size: 25px;
+        position: relative;
+        top: -80%;
+        left: -5%;
+        
+    }
+
+    .bento-grid {
+        /*display: grid;*/
+        /* Creamos 3 columnas de tamaños iguales */
+        /*grid-template-columns: repeat(3, 1fr);
+        /* Creamos 2 filas (la 1ra más alta que la 2da) */
+        /*grid-template-rows: 250px 150px;*/
+        /*gap: 20px; /* Espacio entre los bloques */
+        width: 75%;
+    }
+
+    .bento-item {
+        /*background-color: rgb(181, 212, 255);*/
+        /*border-radius: 20px;
+        padding: 20px;
+        /*box-shadow: 0 10px 20px rgba(0,119,182,0.1);
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;*/
+        position: relative;
+        top:-35rem;
+        left: 2rem;
+        /*width: 50%;*/
+    }
+
+    .btn-magico {
+        /*background-color: #0077b6;*/
+        /*transform: scale(1);
+        /* La magia: cambia 1000 en 0.3 segundos suavemente */
+        /*transition: all 0.3s ease-out;*/
+        width: 70%;
+        /*height: 50px;*/
+        position: relative;
+        top: 45rem;
+        left: -1rem;
+        font-size: 20px;
+    }
+
+    .btn-magico:hover {
+        background-color: #00b4d8;
+        transform: scale(1.1); /* Crece un 10% */
+    }
+
+    #nosotros h1{
+        
+        /*width: 50%;*/
+        font-size: 25px;
+        position: relative;
+        top: -90%;
+        left: -5%;
+        
+    }
+
+    #nosotros h2{
+        width: 60%;
+        font-size: 15px;
+        position: relative;
+        top: -90%;
+        left: 15%;
+        text-align: justify;
+    }
+
+    footer{
+        /*display: flex;*/
+        /*flex-direction: column;
+        gap: 5px;
+        padding: 10px;*/
+        width: 80%;
+        height: 100%;
+        position:relative;
+        top: 100rem;
+        left: -0.5%;
+    }
+
+}
